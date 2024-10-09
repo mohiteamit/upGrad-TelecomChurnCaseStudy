@@ -1,5 +1,6 @@
 # Specifically excluded files.
 telecom-churn-work-in-progress.ipynb
+reference.txt
 
 # Byte-compiled Python files
 __pycache__/
