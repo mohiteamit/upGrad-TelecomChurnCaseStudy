@@ -2,6 +2,8 @@
 telecom-churn-work-in-progress.ipynb
 Amit Mohite - Telecom Churn Prediction -*-.ipynb
 reference.txt
+*.csv
+*.pkl
 
 # Byte-compiled Python files
 __pycache__/
