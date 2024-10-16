@@ -5,6 +5,7 @@ reference.ipynb
 reference.txt
 *.csv
 *.pkl
+*.zip
 
 # Byte-compiled Python files
 __pycache__/
