@@ -1,57 +1,67 @@
-# upGrad-TelecomChurnCaseStudy
+# upGrad - Telecom Churn Prediction Project
 
-# Problem Statement
+## Overview
+This project aims to predict customer churn in a telecom company using various machine learning models. The notebook explores several data preprocessing steps, feature selection techniques, and model evaluation approaches to identify customers who are likely to leave the service.
 
-This is a student exercise using telecom churn data. The goal is to build a model to predict customer churn probability. The data is provided in two parts: one dataset with known churn outcomes (`train.csv`) and another without churn outcomes (`test.csv`).
+## Dataset
+The dataset used for this project includes historical data of telecom customers, such as call minutes, recharge amounts, and usage statistics over several months. The target variable is `churn_probability`, indicating whether a customer is likely to churn (1) or not (0).
 
-### Exercise Overview:
+## Steps in the Notebook
+1. **Data Loading and Cleaning**:
+   - Loaded the dataset and performed initial exploratory data analysis (EDA).
+   - Cleaned data by handling missing values and removing redundant or less informative features.
 
-1. **80% weightage:** Focus on building the best model for the business case—predicting churn probability based on multiple KPIs.
-2. **20% weightage:** A submission to a Kaggle competition, where the model is evaluated on unseen data (`test.csv`).
+2. **Feature Engineering**:
+   - Created additional features based on existing columns to derive more insights.
+   - Employed quantile-based thresholds to identify high-value customers.
 
-The data contains KPIs measured across months, and our EDA will explore how these KPIs evolve over time. We will also test different models to compare their performance and choose the best one for Kaggle submission.
+3. **Feature Selection**:
+   - Used Recursive Feature Elimination (RFE) and Principal Component Analysis (PCA) to select important features.
+   - Top 20 features selected by RFE include 'total_ic_mou_8', 'total_rech_amt_8', 'vol_2g_mb_8', etc.
 
-The model with the highest accuracy will be selected for the Kaggle submission, even if it is not the best across all evaluation metrics.
+4. **Data Splitting**:
+   - Split the data into training and testing sets, ensuring the same proportion of churn and non-churn customers in both sets.
 
--------------------
-# Data dictionary
+5. **Model Building**:
+   - Tested multiple machine learning models, including Logistic Regression, Decision Trees, RandomForest, and XGBoost, with a combination of RFE and PCA for feature reduction.
+   - Hyperparameter tuning was performed using GridSearchCV to optimize each model's performance.
 
-|Acronyms|Description|
-|---|---|
-|CIRCLE_ID|Telecom circle area to which the customer belongs to|
-|LOC|Local calls  within same telecom circle|
-|STD|STD calls  outside the calling circle|
-|IC|Incoming calls|
-|OG|Outgoing calls|
-|T2T|Operator T to T ie within same operator mobile to mobile|
-|T2M    |Operator T to other operator mobile|
-|T2O    |Operator T to other operator fixed line|
-|T2F    |Operator T to fixed lines of T|
-|T2C    |Operator T to its own call center|
-|ARPU    |Average revenue per user|
-|MOU    |Minutes of usage  voice calls|
-|AON    |Age on network  number of days the customer is using the operator T network|
-|ONNET   |All kind of calls within the same operator network|
-|OFFNET    |All kind of calls outside the operator T network|
-|ROAM|Indicates that customer is in roaming zone during the call|
-|SPL   |Special calls|
-|ISD    |ISD calls|
-|RECH    |Recharge|
-|NUM    |Number|
-|AMT    |Amount in local currency|
-|MAX    |Maximum|
-|DATA    |Mobile internet|
-|3G    |G network|
-|AV    |Average|
-|VOL    |Mobile internet usage volume in MB|
-|2G    |G network|
-|PCK    |Prepaid service schemes called  PACKS|
-|NIGHT    |Scheme to use during specific night hours only|
-|MONTHLY    |Service schemes with validity equivalent to a month|
-|SACHET   |Service schemes with validity smaller than a month|
-|*.6    |KPI for the month of June|
-|*.7    |KPI for the month of July|
-|*.8    |KPI for the month of August|
-|FB_USER|Service scheme to avail services of Facebook and similar social networking sites|
-|VBC    |Volume based cost  when no specific scheme is not purchased and paid as per usage|
--------------------
+6. **Evaluation**:
+   - Evaluated model performance using metrics like accuracy, precision, recall, F1-score, and ROC-AUC.
+   - Plotted ROC curves for each model to visualize their ability to distinguish between churn and non-churn customers.
+
+7. **Results**:
+   - Compared different models, and discussed their strengths and weaknesses in predicting churn cases, especially focusing on the minority churn class.
+
+## Key Insights
+- **Feature Selection**: Feature engineering and RFE helped narrow down to the most impactful features, improving model interpretability.
+- **Model Performance**: RandomForest performed the best with high accuracy, recall, and AUC, effectively distinguishing between churn and non-churn customers.
+- **Challenges**: The main challenge was dealing with class imbalance, which led to difficulties in predicting churn with high precision. The models often struggled with false positives for the churn class.
+
+## How to Run the Notebook
+1. Clone the repository and navigate to the project directory.
+2. Install the necessary dependencies using the command:
+   ```
+   pip install -r requirements.txt
+   ```
+3. Open the Jupyter Notebook:
+   ```
+   jupyter notebook "Amit Mohite - Telecom Churn Prediction.ipynb"
+   ```
+4. Run the cells sequentially to replicate the results and observe the model performance.
+
+## Dependencies
+- Python 3.7+
+- Jupyter Notebook
+- pandas, numpy, scikit-learn, xgboost, matplotlib
+
+## Future Work
+- **Improve Churn Precision**: Focus on improving the precision for the churn class to reduce false positives.
+- **Model Optimization**: Experiment with ensemble techniques or neural networks for better performance.
+- **Customer Segmentation**: Explore customer segmentation to understand different customer groups better and target retention strategies more effectively.
+
+## Author
+Amit Mohite
+
+For any queries, feel free to contact me via GitHub or email (mohite.amit@gmail.com)
+
