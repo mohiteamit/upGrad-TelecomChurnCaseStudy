@@ -1,0 +1,7 @@
+python>=3.7
+jupyter
+pandas
+numpy
+scikit-learn
+xgboost
+matplotlib
